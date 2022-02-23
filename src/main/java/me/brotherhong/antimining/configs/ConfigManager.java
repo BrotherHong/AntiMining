@@ -37,7 +37,6 @@ public abstract class ConfigManager {
             YamlConfiguration defaultConfig = YamlConfiguration.loadConfiguration(new InputStreamReader(defaultStream));
             this.dataConfig.setDefaults(defaultConfig);
         }
-        load();
     }
 
     public FileConfiguration getConfig() {
