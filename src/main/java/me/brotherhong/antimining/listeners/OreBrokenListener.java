@@ -23,6 +23,7 @@ public class OreBrokenListener extends MyListener {
         if (player.hasPermission(Permissions.OP))
             return;
         event.setDropItems(false);
+        event.setExpToDrop(0);
         messages.sendWarning(player);
     }
 

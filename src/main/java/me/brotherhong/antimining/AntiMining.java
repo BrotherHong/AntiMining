@@ -7,8 +7,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class AntiMining extends JavaPlugin {
 
-    private Config config;
-    private Messages messages;
+    private final Config config;
+    private final Messages messages;
 
     public AntiMining() {
         config = new Config(this);

@@ -10,23 +10,20 @@ import java.util.stream.Collectors;
 
 public class Config extends ConfigManager {
 
-    private FileConfiguration config;
-
     private String prefix;
     private List<String> targetWorld;
     private List<Material> disabledOre;
 
     public Config(AntiMining plugin) {
         super(plugin, "config.yml");
-        config = super.getConfig();
         load();
     }
 
     @Override
     protected void load() {
-        prefix = config.getString("prefix");
-        targetWorld = config.getStringList("anti-mining-world");
-        disabledOre = config.getStringList("disabled-ore")
+        prefix = getConfig().getString("prefix");
+        targetWorld = getConfig().getStringList("anti-mining-world");
+        disabledOre = getConfig().getStringList("disabled-ore")
                             .stream()
                             .map(d -> Material.getMaterial(d.toUpperCase()))
                             .collect(Collectors.toList());

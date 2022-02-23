@@ -12,11 +12,11 @@ import java.util.logging.Level;
 
 public abstract class ConfigManager {
 
-    private AntiMining plugin;
+    private final AntiMining plugin;
 
     private FileConfiguration dataConfig = null;
     private File configFile = null;
-    private String fileName;
+    private final String fileName;
 
     public ConfigManager(AntiMining plugin, String fileName) {
         this.plugin = plugin;
@@ -64,6 +64,16 @@ public abstract class ConfigManager {
         if (!this.configFile.exists()) {
             this.plugin.saveResource(fileName, false);
         }
+    }
+
+    public void saveAndReload() {
+        saveConfig();
+        reload();
+    }
+
+    public void reload() {
+        reloadConfig();
+        load();
     }
 
     protected abstract void load();

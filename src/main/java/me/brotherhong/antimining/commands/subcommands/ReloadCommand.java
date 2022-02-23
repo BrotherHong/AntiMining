@@ -33,7 +33,7 @@ public class ReloadCommand extends SubCommand {
 
     @Override
     public void execute(Player player, String[] args) {
-        config.reloadConfig();
+        config.reload();
         messages.sendReload(player);
     }
 }
