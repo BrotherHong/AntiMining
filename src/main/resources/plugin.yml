@@ -1,0 +1,13 @@
+name: AntiMining
+version: '${project.version}'
+main: me.brotherhong.antimining.AntiMining
+api-version: 1.18
+authors: [ BrotherHong ]
+
+commands:
+  antimining:
+    aliases: [am]
+
+permissions:
+  antimining.op:
+    default: op
