@@ -32,4 +32,33 @@ public class Messages {
         player.sendMessage(prefix + trans("&aReload Complete."));
     }
 
+    public void send(Player player, String msg) {
+        player.sendMessage(prefix + trans(msg));
+    }
+
+    public void sendMaterialNotFound(Player player) {
+        player.sendMessage(prefix + trans(config.getConfig().getString("messages.material-not-found")));
+    }
+
+    public void sendSuccessAdd(Player player, String material) {
+        player.sendMessage(prefix + trans(
+                config.getConfig().getString("messages.success-add")
+                        .replaceAll("%material%", material))
+        );
+    }
+
+    public void sendSuccessRemove(Player player, String material) {
+        player.sendMessage(prefix + trans(
+                config.getConfig().getString("messages.success-remove")
+                        .replaceAll("%material%", material))
+        );
+    }
+
+    public void sendAlreadyDisabled(Player player) {
+        send(player, config.getConfig().getString("messages.already-disabled"));
+    }
+
+    public void sendNotInList(Player player) {
+        send(player, config.getConfig().getString("messages.not-in-list"));
+    }
 }

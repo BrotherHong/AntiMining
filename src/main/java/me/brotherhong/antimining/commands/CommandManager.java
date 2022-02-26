@@ -2,7 +2,11 @@ package me.brotherhong.antimining.commands;
 
 import me.brotherhong.antimining.AntiMining;
 import me.brotherhong.antimining.Messages;
+import me.brotherhong.antimining.commands.subcommands.AddMaterialCommand;
+import me.brotherhong.antimining.commands.subcommands.ReloadCommand;
+import me.brotherhong.antimining.commands.subcommands.RemoveMaterialCommand;
 import me.brotherhong.antimining.configs.Config;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
@@ -10,6 +14,7 @@ import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CommandManager implements TabExecutor {
 
@@ -23,6 +28,10 @@ public class CommandManager implements TabExecutor {
         this.plugin = plugin;
         this.config = plugin.getMyConfig();
         this.messages = plugin.getMessages();
+
+        subCommands.add(new ReloadCommand(plugin));
+        subCommands.add(new AddMaterialCommand(plugin));
+        subCommands.add(new RemoveMaterialCommand(plugin));
     }
 
     @Override
@@ -58,7 +67,22 @@ public class CommandManager implements TabExecutor {
                 }
             }
             return result;
+        } else if (args.length == 2) {
+            if (args[0].equalsIgnoreCase("add")) {
+                result.add("<Material>");
+            }
+            else if (args[0].equalsIgnoreCase("remove")) {
+                result = getSimilarMaterial(args[1]);
+            }
+            return result;
         }
         return null;
+    }
+
+    private List<String> getSimilarMaterial(String material) {
+        return config.getDisabledOre().stream()
+                .map(Material::name)
+                .filter(name -> name.startsWith(material.toUpperCase()))
+                .collect(Collectors.toList());
     }
 }

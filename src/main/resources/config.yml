@@ -6,6 +6,11 @@ anti-mining-world:
 messages:
   warning: "&cHey! You can't mine ore in this world!"
   no-permission: "&cYou do not have permission to do this!"
+  material-not-found: "&cCouldn't find such material! &7Check https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html"
+  success-add: "&aSuccessfully add disabled material: &7%material%"
+  success-remove: "&cSuccessfully remove disabled material: &7%material%"
+  already-disabled: "&cThis material has been disabled"
+  not-in-list: "&cThis material does not exist in disabled list"
 
 disabled-ore:
   - COAL_ORE
